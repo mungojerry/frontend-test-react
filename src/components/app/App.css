@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(#ddd, #ccc);
+    height: 100vh;
+}
+
+.app {
+    font-size: 1rem;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.app-header {
+    text-align: center;
+    background-color: #2e2e2e;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #efefef;
+}
+
+.app-content {}
+
+.app-title {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.app-intro {
+    text-align: center;
+    font-size: 1.3rem;
+}
