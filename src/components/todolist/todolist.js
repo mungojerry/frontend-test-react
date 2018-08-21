@@ -14,7 +14,7 @@ export default class TodoList extends Component {
             date.setTime(todo.created);
 
             return (
-                <li key={todo.id} className="animate-reveal" className={todo.isDone ? 'todo-done' : ''}>
+                <li key={todo.id} className={todo.isDone ? 'animate-reveal todo-done' : 'animate-reveal'}>
                     <div className="todo-content">
                         <div className="todo-title">{todo.title}</div>
                         <div className="todo-date">{date.toString()}</div>

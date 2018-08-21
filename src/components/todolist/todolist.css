@@ -60,6 +60,7 @@ li {
 }
 
 .animate-reveal {
+    transition: background-color 0.5s;
     animation: grow-left cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.2s forwards;
     transform-origin: center left;
 }
