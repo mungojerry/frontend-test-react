@@ -7,19 +7,20 @@ const nextId = () => {
 };
 
 const actions = {
-    submitToDo(text, created) {
+    submit(text, priority, title, tags, created) {
+
         return {
             type: 'SUBMIT',
             id: nextId(),
             description: text,
-            title: `To do item #${todoId}`,
+            title: title,
             created: created,
-            priority: 1,
-            tags: [],
+            priority: priority,
+            tags: tags,
             isDone: false
         };
     },
-    deleteToDo(id) {
+    delete(id) {
         return {
             type: 'DELETE',
             id,

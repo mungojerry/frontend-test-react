@@ -1,5 +1,3 @@
-/* global it, expect */
-
 import Adapter from 'enzyme-adapter-react-16';
 import App from './app';
 import React from 'react';
@@ -13,7 +11,7 @@ it('Instantiates and renders App', () => {
     const mockFunction = jest.fn();
     const component = shallow(<Provider store={store}>
         <App state={initialState}
-            submitToDo={mockFunction}
+            submit={mockFunction}
             todos={[]} />
     </Provider>);
     expect(component.exists()).toEqual(true);

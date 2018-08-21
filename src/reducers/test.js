@@ -1,4 +1,3 @@
-/* global expect, it, describe */
 
 import { reducer, initialState } from './';
 

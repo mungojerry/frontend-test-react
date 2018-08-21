@@ -1,5 +1,3 @@
-/* global describe, it, expect, jest */
-
 import React from 'react';
 import { configure, shallow } from 'enzyme';
 import TodoList from './todolist';
@@ -22,7 +20,7 @@ describe('TodoList component', () => {
                 isDone: false
             }
         ],
-        deleteToDo: deleteMock,
+        delete: deleteMock,
         markAsDone: markAsDoneMock,
     };
 
@@ -36,7 +34,7 @@ describe('TodoList component', () => {
         expect(component.find('.todo-text').text()).toEqual(props.todos[0].description);
     });
 
-    it('Call the deleteToDo function when delete icon clicked', () => {
+    it('Call the delete function when delete icon clicked', () => {
         expect(deleteMock.mock.calls.length).toEqual(0);
         component.find('.todo-delete').simulate('click');
         expect(deleteMock.mock.calls.length).toEqual(1);

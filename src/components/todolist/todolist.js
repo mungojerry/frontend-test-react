@@ -12,6 +12,8 @@ export default class TodoList extends Component {
         let todoItems = this.props.todos.map(todo => {
             let date = new Date();
             date.setTime(todo.created);
+            let tags = '';
+            todo.tags.forEach(tag => tags += `#${tag.trim()} `);
 
             return (
                 <li key={todo.id} className={todo.isDone ? 'animate-reveal todo-done' : 'animate-reveal'}>
@@ -19,9 +21,11 @@ export default class TodoList extends Component {
                         <div className="todo-title">{todo.title}</div>
                         <div className="todo-date">{date.toString()}</div>
                         <div className="todo-text">{todo.description}</div>
+                        <div className="todo-tags">Tags: {tags}</div>
+                        <div className="todo-priority">Priority: {todo.priority}</div>
                     </div>
                     <div className="todo-buttons">
-                        <FontAwesomeIcon icon="trash-alt" className="todo-button todo-delete" onClick={() => { this.props.deleteToDo(todo.id); }} />
+                        <FontAwesomeIcon icon="trash-alt" className="todo-button todo-delete" onClick={() => { this.props.delete(todo.id); }} />
                         <FontAwesomeIcon icon={todo.isDone ? 'check-square' : 'square'} className="todo-button todo-markasdone" onClick={() => { this.props.markAsDone(todo.id); }} />
                     </div>
                 </li>
@@ -47,6 +51,6 @@ TodoList.propTypes = {
             isDone: PropTypes.bool.isRequired,
         }
     )).isRequired,
-    deleteToDo: PropTypes.func.isRequired,
+    delete: PropTypes.func.isRequired,
     markAsDone: PropTypes.func.isRequired,
 };

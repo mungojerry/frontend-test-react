@@ -1,6 +1,3 @@
-
-/* global expect, it, describe, jest, beforeEach  */
-
 import Adapter from 'enzyme-adapter-react-16';
 import AddToDo from './addtodo';
 import React from 'react';
@@ -15,7 +12,7 @@ describe('AddToDo component', () => {
     beforeEach(() => {
         component = shallow(
             <AddToDo
-                submitToDo={submitMock}
+                submit={submitMock}
             />,
         );
     });
@@ -23,19 +20,23 @@ describe('AddToDo component', () => {
         expect(component.exists()).toEqual(true);
     });
 
-    it('Should have a single input component', () => {
-        expect(component.find('.todo-input').length).toEqual(1);
+    it('Should have input components', () => {
+        expect(component.find('.todo-input-description').length).toEqual(1);
+        expect(component.find('.todo-input-priority').length).toEqual(1);
+        expect(component.find('.todo-input-tags').length).toEqual(1);
+        expect(component.find('.todo-input-title').length).toEqual(1);
     });
 
     describe('Add todo button', () => {
         it('Should exist', () => {
-            expect(component.find('.todo-submit').length).toEqual(1);
-            expect(component.find('.todo-submit').text()).toEqual('Add item');
-            expect(component.find('.todo-submit').text()).not.toEqual('Input item'); // just testing this works
+            let todosubmitbutton = component.find('.todo-submit');
+            expect(todosubmitbutton.length).toEqual(1);
+            expect(todosubmitbutton.text()).toEqual('Add item');
+            expect(todosubmitbutton.text()).not.toEqual('Input item'); // just testing this works
         });
 
-        it('Should call the submitToDo function when clicked', () => {
-            component = mount(<AddToDo submitToDo={submitMock} />);
+        it('Should call the submit function when clicked', () => {
+            component = mount(<AddToDo submit={submitMock} />);
             expect(submitMock.mock.calls.length).toEqual(0);
             component.find('form').simulate('submit');
             expect(submitMock.mock.calls.length).toEqual(1);

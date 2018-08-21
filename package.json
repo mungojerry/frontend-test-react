@@ -8,12 +8,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
-    "test": "react-scripts test --env=jsdom",
-    "selenium:setup": "selenium-standalone install",
-    "selenium:start": "selenium-standalone start",
-    "selenium": "selenium-standalone start",
-    "e2e-tests": "wdio ./wdio.conf.js",
-    "e2e-tests:watch": "wdio ./wdio.conf.js --watch"
+    "test": "react-scripts test --env=jsdom"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.2",
@@ -50,12 +45,7 @@
     "prop-types": "^15.6.2",
     "react-svg-loader": "^2.1.0",
     "react-test-renderer": "^16.4.2",
-    "selenium-standalone": "^6.15.1",
     "style-loader": "^0.20.3",
-    "wdio-dot-reporter": "0.0.10",
-    "wdio-mocha-framework": "^0.6.2",
-    "wdio-selenium-standalone-service": "0.0.10",
-    "webdriverio": "^4.13.2",
     "webpack": "^4.5.0",
     "webpack-cli": "^2.0.14",
     "webpack-dev-server": "^3.1.3"

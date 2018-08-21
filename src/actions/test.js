@@ -19,7 +19,7 @@ describe('Actions', () => {
             isDone: false
         };
 
-        expect(actions.submitToDo(todoText, created)).toEqual(expectedAction);
+        expect(actions.submit(todoText, 1, 'To do item #1', [], created)).toEqual(expectedAction);
     });
 
     it('Should create an action to mark a todo as done', () => {
@@ -37,6 +37,6 @@ describe('Actions', () => {
             type: 'DELETE',
             id: 1,
         };
-        expect(actions.deleteToDo(1)).toEqual(expectedAction);
+        expect(actions.delete(1)).toEqual(expectedAction);
     });
 });

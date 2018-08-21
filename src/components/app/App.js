@@ -25,8 +25,8 @@ export class App extends Component {
                     <div className="app-intro">The worlds most exciting to-do app</div>
                 </div>
                 <div className="app-content">
-                    <AddToDo submitToDo={this.props.submitToDo} />
-                    <TodoList todos={this.props.todos} deleteToDo={this.props.deleteToDo} markAsDone={this.props.markAsDone} />
+                    <AddToDo submit={this.props.submit} />
+                    <TodoList todos={this.props.todos} delete={this.props.delete} markAsDone={this.props.markAsDone} />
                 </div>
             </div>
         );
@@ -45,21 +45,21 @@ App.propTypes = {
             isDone: PropTypes.bool.isRequired,
         },
     )).isRequired,
-    submitToDo: PropTypes.func.isRequired,
-    deleteToDo: PropTypes.func.isRequired,
+    submit: PropTypes.func.isRequired,
+    delete: PropTypes.func.isRequired,
     markAsDone: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => state.todos;
 
 const mapDispatchToProps = dispatch => ({
-    submitToDo: (text, created) => {
+    submit: (text, priority, title, tags, created) => {
         if (text) {
-            dispatch(actions.submitToDo(text, created));
+            dispatch(actions.submit(text, priority, title, tags, created));
         }
     },
-    deleteToDo: (id) => {
-        dispatch(actions.deleteToDo(id));
+    delete: (id) => {
+        dispatch(actions.delete(id));
     },
     markAsDone: (id) => {
         dispatch(actions.markAsDone(id));
