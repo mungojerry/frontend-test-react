@@ -16,13 +16,18 @@
     "e2e-tests:watch": "wdio ./wdio.conf.js --watch"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.2",
+    "@fortawesome/free-solid-svg-icons": "^5.2.0",
+    "@fortawesome/react-fontawesome": "^0.1.2",
     "babel-polyfill": "^6.26.0",
+    "i": "^0.3.6",
+    "npm": "^6.4.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",
+    "react-scripts": "1.1.4",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0",
-    "react-scripts": "1.1.4"
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
