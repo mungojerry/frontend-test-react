@@ -1,0 +1,62 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    text-align: left;
+    background-color: darkolivegreen;
+    color: white;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 3px;
+}
+
+.todo-content {
+    display: inline-block;
+    width: 70%;
+}
+
+.todo-buttons {
+    display: inline-block;
+    min-width: 30%;
+    height: 100%;
+    text-align: right;
+    vertical-align: center;
+}
+
+.todo-button {
+    font-size: 4rem;
+    padding: 10px;
+}
+
+.todo-title {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.todo-date {
+    font-size: 0.7rem;
+    font-weight: 100;
+}
+
+.todo-text {
+    font-size: 1.3rem;
+    font-weight: 200;
+}
+
+@keyframes grow-left {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.animate-reveal {
+    animation: grow-left cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.2s forwards;
+    transform-origin: center left;
+}
