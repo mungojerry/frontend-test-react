@@ -26,17 +26,17 @@ describe('TodoList component', () => {
 
     let component = shallow(<TodoList  {...props} />);
 
-    it('Should render successfully', () => {
+    it('Renders component', () => {
         expect(component.exists()).toEqual(true);
     });
 
-    it('Should display a todo when passed in as a prop', () => {
+    it('Display a todo', () => {
         expect(component.find('.todo-text').text()).toEqual(props.todos[0].description);
     });
 
-    it('Should call the deleteToDo function when Delete button is clicked', () => {
+    it('Call the deleteToDo function when delete icon clicked', () => {
         expect(deleteMock.mock.calls.length).toEqual(0);
         component.find('.todo-delete').simulate('click');
-        // expect(deleteMock.mock.calls.length).toEqual(1);
+        expect(deleteMock.mock.calls.length).toEqual(1);
     });
 });

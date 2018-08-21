@@ -10,7 +10,7 @@ import { initialState } from '../../reducers';
 configure({ adapter: new Adapter() });
 
 
-it('renders app without crashing', () => {
+it('Instantiates and renders App', () => {
   const mockFunction = jest.fn();
   const component = shallow(<Provider store={store}>
     <App state={initialState}

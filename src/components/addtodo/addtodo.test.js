@@ -19,11 +19,11 @@ describe('AddToDo component', () => {
             />,
         );
     });
-    it('Should render successfully', () => {
+    it('Instantiates component', () => {
         expect(component.exists()).toEqual(true);
     });
 
-    it('Should have one input', () => {
+    it('Should have a single input component', () => {
         expect(component.find('.todo-input').length).toEqual(1);
     });
 
