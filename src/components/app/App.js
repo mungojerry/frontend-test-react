@@ -38,7 +38,7 @@ App.propTypes = {
         {
             id: PropTypes.number.isRequired,
             description: PropTypes.string.isRequired,
-            createdAt: PropTypes.number.isRequired,
+            created: PropTypes.number.isRequired,
             title: PropTypes.string.isRequired,
             priority: PropTypes.number.isRequired,
             tags: PropTypes.array.isRequired,
@@ -53,9 +53,9 @@ App.propTypes = {
 const mapStateToProps = state => state.todos;
 
 const mapDispatchToProps = dispatch => ({
-    submitToDo: (text, createdAt) => {
+    submitToDo: (text, created) => {
         if (text) {
-            dispatch(actions.submitToDo(text, createdAt));
+            dispatch(actions.submitToDo(text, created));
         }
     },
     deleteToDo: (id) => {

@@ -7,13 +7,13 @@ const nextId = () => {
 };
 
 const actions = {
-    submitToDo(text, createdAt) {
+    submitToDo(text, created) {
         return {
             type: 'SUBMIT',
             id: nextId(),
             description: text,
             title: `To do item #${todoId}`,
-            createdAt: createdAt,
+            created: created,
             priority: 1,
             tags: [],
             isDone: false

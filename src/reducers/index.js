@@ -14,7 +14,7 @@ export const reducer = (state = initialState, action) => {
                     {
                         id: action.id,
                         description: action.description,
-                        createdAt: action.createdAt,
+                        created: action.created,
                         title: action.title,
                         priority: action.priority,
                         tags: action.tags,

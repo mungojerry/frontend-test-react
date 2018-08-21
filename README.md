@@ -68,7 +68,7 @@ yarn start
 ### Todo object
 
 - **id** - string - unique ID of call
-- **createdAt** - string - creation date
+- **created** - string - creation date
 - **title** - string (required) - short todo title
 - **description** - string (required) - todo detailed description
 - **priority** - number - importance of task

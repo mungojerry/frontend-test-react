@@ -14,7 +14,7 @@ describe('Reducer', () => {
                 type: 'SUBMIT',
                 id: 1,
                 description: 'Test to do item',
-                createdAt: dateCreated,
+                created: dateCreated,
                 title: 'Test to do item title',
                 priority: 1,
                 tags: tags,
@@ -26,7 +26,7 @@ describe('Reducer', () => {
                     {
                         id: 1,
                         description: 'Test to do item',
-                        createdAt: dateCreated,
+                        created: dateCreated,
                         title: 'Test to do item title',
                         priority: 1,
                         tags: tags,
@@ -47,7 +47,7 @@ describe('Reducer', () => {
                     {
                         id: 1,
                         description: 'Test to do item',
-                        createdAt: dateCreated,
+                        created: dateCreated,
                         title: 'Test to do item title',
                         priority: 1,
                         tags: tags,
@@ -77,7 +77,7 @@ describe('Reducer', () => {
                     {
                         id: 1,
                         description: 'Test to do item',
-                        createdAt: dateCreated,
+                        created: dateCreated,
                         title: 'Test to do item title',
                         priority: 1,
                         tags: tags,
@@ -96,7 +96,7 @@ describe('Reducer', () => {
                     {
                         id: 1,
                         description: 'Test to do item',
-                        createdAt: dateCreated,
+                        created: dateCreated,
                         title: 'Test to do item title',
                         priority: 1,
                         tags: tags,

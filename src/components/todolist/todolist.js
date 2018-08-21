@@ -11,7 +11,7 @@ export default class TodoList extends Component {
     render() {
         let todoItems = this.props.todos.map(todo => {
             let date = new Date();
-            date.setTime(todo.createdAt);
+            date.setTime(todo.created);
 
             return (
                 <li key={todo.id} className="animate-reveal" className={todo.isDone ? 'todo-done' : ''}>
@@ -40,7 +40,7 @@ TodoList.propTypes = {
         {
             id: PropTypes.number.isRequired,
             description: PropTypes.string.isRequired,
-            createdAt: PropTypes.number.isRequired,
+            created: PropTypes.number.isRequired,
             title: PropTypes.string.isRequired,
             priority: PropTypes.number.isRequired,
             tags: PropTypes.array.isRequired,

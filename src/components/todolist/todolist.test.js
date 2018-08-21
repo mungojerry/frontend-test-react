@@ -16,7 +16,7 @@ describe('TodoList component', () => {
                 id: 1,
                 description: 'An example todo',
                 title: 'To do item #1',
-                createdAt: 10000,
+                created: 10000,
                 priority: 1,
                 tags: [],
                 isDone: false
