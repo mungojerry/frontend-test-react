@@ -36,7 +36,6 @@ describe('AddToDo component', () => {
 
         it('Should call the submitToDo function when clicked', () => {
             component = mount(<AddToDo submitToDo={submitMock} />);
-
             expect(submitMock.mock.calls.length).toEqual(0);
             component.find('form').simulate('submit');
             expect(submitMock.mock.calls.length).toEqual(1);

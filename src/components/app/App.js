@@ -6,11 +6,11 @@ import React, { Component } from 'react';
 import TodoList from '../todolist/todolist';
 import actions from '../../actions';
 import { connect } from 'react-redux';
-import { faTrashAlt, faTimes, faCheckSquare } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt, faTimes, faCheckSquare, faSquare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
-library.add(faTrashAlt, faTimes, faCheckSquare);
+library.add(faTrashAlt, faTimes, faCheckSquare, faSquare);
 
 export class App extends Component {
     constructor(props) {
@@ -26,7 +26,7 @@ export class App extends Component {
                 </div>
                 <div className="app-content">
                     <AddToDo submitToDo={this.props.submitToDo} />
-                    <TodoList todos={this.props.todos} deleteToDo={this.props.deleteToDo} />
+                    <TodoList todos={this.props.todos} deleteToDo={this.props.deleteToDo} markAsDone={this.props.markAsDone} />
                 </div>
             </div>
         );
@@ -34,7 +34,6 @@ export class App extends Component {
 };
 
 App.propTypes = {
-    submitToDo: PropTypes.func.isRequired,
     todos: PropTypes.arrayOf(PropTypes.shape(
         {
             id: PropTypes.number.isRequired,
@@ -46,19 +45,24 @@ App.propTypes = {
             isDone: PropTypes.bool.isRequired,
         },
     )).isRequired,
+    submitToDo: PropTypes.func.isRequired,
     deleteToDo: PropTypes.func.isRequired,
+    markAsDone: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => state.todos;
 
 const mapDispatchToProps = dispatch => ({
-    submitToDo: (text) => {
+    submitToDo: (text, createdAt) => {
         if (text) {
-            dispatch(actions.submitToDo(text));
+            dispatch(actions.submitToDo(text, createdAt));
         }
     },
     deleteToDo: (id) => {
         dispatch(actions.deleteToDo(id));
+    },
+    markAsDone: (id) => {
+        dispatch(actions.markAsDone(id));
     },
 });
 

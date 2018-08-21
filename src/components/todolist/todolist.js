@@ -14,18 +14,15 @@ export default class TodoList extends Component {
             date.setTime(todo.createdAt);
 
             return (
-                <li key={todo.id} className="animate-reveal">
+                <li key={todo.id} className="animate-reveal" className={todo.isDone ? 'todo-done' : ''}>
                     <div className="todo-content">
                         <div className="todo-title">{todo.title}</div>
                         <div className="todo-date">{date.toString()}</div>
                         <div className="todo-text">{todo.description}</div>
                     </div>
                     <div className="todo-buttons">
-                        <FontAwesomeIcon icon="check-square" className="todo-button todo-delete" onClick={
-                            () => {
-                                this.props.deleteToDo(todo.id);
-                            }
-                        } />
+                        <FontAwesomeIcon icon="trash-alt" className="todo-button todo-delete" onClick={() => { this.props.deleteToDo(todo.id); }} />
+                        <FontAwesomeIcon icon={todo.isDone ? 'check-square' : 'square'} className="todo-button todo-markasdone" onClick={() => { this.props.markAsDone(todo.id); }} />
                     </div>
                 </li>
             );
@@ -51,4 +48,5 @@ TodoList.propTypes = {
         }
     )).isRequired,
     deleteToDo: PropTypes.func.isRequired,
+    markAsDone: PropTypes.func.isRequired,
 };

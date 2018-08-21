@@ -31,6 +31,15 @@ export const reducer = (state = initialState, action) => {
                     )),
                 ],
             };
+        case 'MARKASDONE':
+            let idx = state.todos.findIndex(todo => todo.id === action.id);
+            state.todos[idx].isDone = !state.todos[idx].isDone;
+            return {
+                ...state,
+                todos: [
+                    ...state.todos
+                ],
+            };
         default:
             return state;
     }

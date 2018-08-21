@@ -7,13 +7,13 @@ const nextId = () => {
 };
 
 const actions = {
-    submitToDo(text) {
+    submitToDo(text, createdAt) {
         return {
             type: 'SUBMIT',
             id: nextId(),
             description: text,
             title: `To do item #${todoId}`,
-            createdAt: Date.now(),
+            createdAt: createdAt,
             priority: 1,
             tags: [],
             isDone: false
@@ -23,6 +23,13 @@ const actions = {
         return {
             type: 'DELETE',
             id,
+        };
+    },
+    markAsDone(id) {
+        return {
+            type: 'MARKASDONE',
+            id,
+            isDone: true
         };
     },
 };

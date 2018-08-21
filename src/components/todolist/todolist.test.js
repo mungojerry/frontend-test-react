@@ -9,19 +9,21 @@ configure({ adapter: new Adapter() });
 describe('TodoList component', () => {
 
     const deleteMock = jest.fn();
+    const markAsDoneMock = jest.fn();
     const props = {
         todos: [
             {
                 id: 1,
                 description: 'An example todo',
                 title: 'To do item #1',
-                createdAt: 1,
+                createdAt: 10000,
                 priority: 1,
                 tags: [],
                 isDone: false
             }
         ],
         deleteToDo: deleteMock,
+        markAsDone: markAsDoneMock,
     };
 
     let component = shallow(<TodoList  {...props} />);
@@ -38,5 +40,11 @@ describe('TodoList component', () => {
         expect(deleteMock.mock.calls.length).toEqual(0);
         component.find('.todo-delete').simulate('click');
         expect(deleteMock.mock.calls.length).toEqual(1);
+    });
+
+    it('Call the markAsDone function when mark as read icon clicked', () => {
+        expect(markAsDoneMock.mock.calls.length).toEqual(0);
+        component.find('.todo-markasdone').simulate('click');
+        expect(markAsDoneMock.mock.calls.length).toEqual(1);
     });
 });
