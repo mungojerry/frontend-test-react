@@ -1,13 +1,13 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import './css/app.css';
-import './css/header.css';
-import App from './components/app/App';
+import App from './components/app/app';
 import store from './store';
+import { Provider } from 'react-redux';
 
 ReactDOM.render(
-  <App store={store} />,
+  <Provider store={store} >
+    <App />
+  </Provider>,
   document.getElementById('app'),
 );
