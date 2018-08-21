@@ -9,13 +9,12 @@ import { Provider } from 'react-redux';
 import { initialState } from '../../reducers';
 configure({ adapter: new Adapter() });
 
-
 it('Instantiates and renders App', () => {
-  const mockFunction = jest.fn();
-  const component = shallow(<Provider store={store}>
-    <App state={initialState}
-      submitToDo={mockFunction}
-      todos={[]} />
-  </Provider>);
-  expect(component.exists()).toEqual(true);
+    const mockFunction = jest.fn();
+    const component = shallow(<Provider store={store}>
+        <App state={initialState}
+            submitToDo={mockFunction}
+            todos={[]} />
+    </Provider>);
+    expect(component.exists()).toEqual(true);
 });
