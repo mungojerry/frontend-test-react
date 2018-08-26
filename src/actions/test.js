@@ -9,7 +9,7 @@ describe('Actions', () => {
 
     it('Should create an action to add a todo', () => {
         const expectedAction = {
-            type: 'SUBMIT',
+            type: 'ADD',
             id: 1,
             description: todoText,
             title: 'To do item #1',

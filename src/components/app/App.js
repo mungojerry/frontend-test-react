@@ -9,13 +9,21 @@ import { connect } from 'react-redux';
 import { faTrashAlt, faTimes, faCheckSquare, faSquare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
+import Axios from 'axios';
 
 library.add(faTrashAlt, faTimes, faCheckSquare, faSquare);
 
 export class App extends Component {
     constructor(props) {
         super(props);
+        this.state = {};
+        this.state.todos = [];
     }
+
+    componentDidMount() {
+        this.props.getTodos();
+    }
+
     render() {
         return (
             <div className="app">
@@ -33,22 +41,22 @@ export class App extends Component {
     }
 };
 
-App.propTypes = {
-    todos: PropTypes.arrayOf(PropTypes.shape(
-        {
-            id: PropTypes.number.isRequired,
-            description: PropTypes.string.isRequired,
-            created: PropTypes.number.isRequired,
-            title: PropTypes.string.isRequired,
-            priority: PropTypes.number.isRequired,
-            tags: PropTypes.array.isRequired,
-            isDone: PropTypes.bool.isRequired,
-        },
-    )).isRequired,
-    submit: PropTypes.func.isRequired,
-    delete: PropTypes.func.isRequired,
-    markAsDone: PropTypes.func.isRequired,
-};
+// App.propTypes = {
+//     todos: PropTypes.arrayOf(PropTypes.shape(
+//         {
+//             id: PropTypes.any.isRequired,
+//             description: PropTypes.string.isRequired,
+//             created: PropTypes.number.isRequired,
+//             title: PropTypes.string.isRequired,
+//             priority: PropTypes.number.isRequired,
+//             tags: PropTypes.array.isRequired,
+//             isDone: PropTypes.bool.isRequired,
+//         },
+//     )).isRequired,
+//     submit: PropTypes.func.isRequired,
+//     delete: PropTypes.func.isRequired,
+//     markAsDone: PropTypes.func.isRequired,
+// };
 
 const mapStateToProps = state => state.todos;
 
@@ -63,6 +71,9 @@ const mapDispatchToProps = dispatch => ({
     },
     markAsDone: (id) => {
         dispatch(actions.markAsDone(id));
+    },
+    getTodos: () => {
+        dispatch(actions.getTodos());
     },
 });
 

@@ -3,14 +3,14 @@ import { reducer, initialState } from './';
 
 describe('Reducer', () => {
     it('Should return the initial state when no action passed', () => {
-        expect(reducer(undefined, [], 'SUBMIT')).toEqual(initialState);
+        expect(reducer(undefined, [], 'ADD')).toEqual(initialState);
     });
     describe('Submit todo', () => {
         it('Should return the correct state', () => {
             let dateCreated = Date.now();
             let tags = ['Test tag 1', 'Test tag 2'];
             const action = {
-                type: 'SUBMIT',
+                type: 'ADD',
                 id: 1,
                 description: 'Test to do item',
                 created: dateCreated,

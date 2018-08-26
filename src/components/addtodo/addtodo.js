@@ -21,9 +21,9 @@ export default class AddToDo extends Component {
                 }}>
                     <div className="input-label">Priority: </div>
                     <select className="todo-input-priority" ref={(element) => { priority = element; }}>
-                        <option value="high">High</option>
-                        <option value="medium">Medium</option>
-                        <option value="low">Low</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
                     <div className="input-label">Title: </div>
                     <input className="todo-input-title" ref={(element) => { title = element; }} />

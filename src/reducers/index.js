@@ -1,10 +1,12 @@
+import axios from 'axios';
+
 export const initialState = {
     todos: [],
 };
 
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'SUBMIT':
+        case 'ADD':
             return {
                 ...state,
                 todos: [
@@ -14,7 +16,7 @@ export const reducer = (state = initialState, action) => {
                         description: action.description,
                         created: action.created,
                         title: action.title,
-                        priority: action.priority,
+                        priority: +action.priority,
                         tags: action.tags,
                         isDone: action.isDone
                     },
@@ -37,6 +39,22 @@ export const reducer = (state = initialState, action) => {
                 todos: [
                     ...state.todos
                 ],
+            };
+        case 'RECEIVE_TODO':
+            return {
+                ...state,
+                todos: [
+                    ...state.todos,
+                    action.todo
+                ]
+            };
+        case 'RECEIVE_TODOS':
+            return {
+                ...state,
+                todos: [
+                    ...state.todos,
+                    ...action.todos
+                ]
             };
         default:
             return state;

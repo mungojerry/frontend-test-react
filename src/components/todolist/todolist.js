@@ -2,18 +2,23 @@ import './todolist.css';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Axios from 'axios';
 
 export default class TodoList extends Component {
     constructor(props) {
         super(props);
+
     }
 
+
     render() {
+        console.log(this.props.todos);
         let todoItems = this.props.todos.map(todo => {
             let date = new Date();
             date.setTime(todo.created);
             let tags = '';
-            todo.tags.forEach(tag => tags += `#${tag.trim()} `);
+            if (todo.tags)
+                todo.tags.forEach(tag => tags += `#${tag.trim()} `);
 
             return (
                 <li key={todo.id} className={todo.isDone ? 'animate-reveal todo-done' : 'animate-reveal'}>
@@ -39,18 +44,18 @@ export default class TodoList extends Component {
     }
 }
 
-TodoList.propTypes = {
-    todos: PropTypes.arrayOf(PropTypes.shape(
-        {
-            id: PropTypes.number.isRequired,
-            description: PropTypes.string.isRequired,
-            created: PropTypes.number.isRequired,
-            title: PropTypes.string.isRequired,
-            priority: PropTypes.number.isRequired,
-            tags: PropTypes.array.isRequired,
-            isDone: PropTypes.bool.isRequired,
-        }
-    )).isRequired,
-    delete: PropTypes.func.isRequired,
-    markAsDone: PropTypes.func.isRequired,
-};
+// TodoList.propTypes = {
+//     todos: PropTypes.arrayOf(PropTypes.shape(
+//         {
+//             id: PropTypes.any.isRequired,
+//             description: PropTypes.string.isRequired,
+//             created: PropTypes.number.isRequired,
+//             title: PropTypes.string.isRequired,
+//             priority: PropTypes.number.isRequired,
+//             tags: PropTypes.array.isRequired,
+//             isDone: PropTypes.bool.isRequired,
+//         }
+//     )).isRequired,
+//     delete: PropTypes.func.isRequired,
+//     markAsDone: PropTypes.func.isRequired,
+// };

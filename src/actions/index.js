@@ -1,3 +1,4 @@
+import Axios from "axios";
 
 let todoId = 0;
 
@@ -7,10 +8,32 @@ const nextId = () => {
 };
 
 const actions = {
+    requestTodos() {
+        return {
+            type: 'REQUEST_TODOS'
+        }
+    },
+    receiveTodos(json) {
+        return {
+            type: 'RECEIVE_TODOS',
+            todos: json
+        }
+    },
+    getTodos() {
+        return dispatch => {
+            dispatch(actions.requestTodos()),
+                Axios.get('https://backend.pi-top.com/todo-test/v1/todos')
+                    .then(res => {
+                        console.log(res);
+                        dispatch(actions.receiveTodos(res.data));
+                    });
+        }
+    },
+
     submit(text, priority, title, tags, created) {
 
         return {
-            type: 'SUBMIT',
+            type: 'ADD',
             id: nextId(),
             description: text,
             title: title,
