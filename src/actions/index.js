@@ -3,58 +3,71 @@ import Axios from "axios";
 let todoId = 0;
 
 const nextId = () => {
-    todoId += 1;
-    return todoId;
+    return ++todoId;
 };
 
 const actions = {
-    requestTodos() {
-        return {
-            type: 'REQUEST_TODOS'
-        }
-    },
+
     receiveTodos(json) {
         return {
             type: 'RECEIVE_TODOS',
             todos: json
         }
     },
-    getTodos() {
-        return dispatch => {
-            dispatch(actions.requestTodos()),
-                Axios.get('https://backend.pi-top.com/todo-test/v1/todos')
-                    .then(res => {
-                        console.log(res);
-                        dispatch(actions.receiveTodos(res.data));
-                    });
+
+    receiveTodo(json) {
+        return {
+            type: 'RECEIVE_TODO',
+            todo: json
         }
     },
 
-    submit(text, priority, title, tags, created) {
-
-        return {
-            type: 'ADD',
-            id: nextId(),
-            description: text,
-            title: title,
-            created: created,
-            priority: priority,
-            tags: tags,
-            isDone: false
-        };
+    getTodos() {
+        return dispatch => {
+            Axios.get('https://backend.pi-top.com/todo-test/v1/todos')
+                .then(res => {
+                    dispatch(actions.receiveTodos(res.data.filter(todo => !todo.isDone)));
+                });
+        }
     },
-    delete(id) {
+
+    addTodo(text, priority, title, tags, createdAt) {
+        return dispatch => {
+            Axios.post('https://backend.pi-top.com/todo-test/v1/todos', {
+                id: 0,
+                description: text,
+                title: title,
+                createdAt: createdAt,
+                priority: +priority,
+                tags: tags,
+                isDone: false
+            })
+                .then(res => {
+                    dispatch(actions.receiveTodo(res.data));
+                });
+        }
+    },
+
+    deleteTodo(id) {
         return {
             type: 'DELETE',
             id,
         };
     },
-    markAsDone(id) {
-        return {
-            type: 'MARKASDONE',
-            id,
-            isDone: true
-        };
+
+    toggleDone(todo) {
+        return dispatch => {
+            Axios.put(`https://backend.pi-top.com/todo-test/v1/todos/${todo.id}`, {
+                isDone: !todo.isDone
+            })
+                .then(res => {
+                    dispatch({
+                        type: 'TOGGLEDONE',
+                        id: todo.id,
+                        isDone: !todo.isDone
+                    });
+                });
+        }
     },
 };
 
