@@ -20,6 +20,13 @@ export class App extends Component {
         this.state.todos = [];
     }
 
+    getInitialState() {
+        return { showAdd: false };
+    }
+    toggleAddTodo() {
+        this.setState({ showAdd: !this.state.showAdd });
+    }
+
     componentDidMount() {
         this.props.getTodos();
     }
@@ -33,44 +40,40 @@ export class App extends Component {
                     <div className="app-intro">The worlds most exciting to-do app</div>
                 </div>
                 <div className="app-content">
-                    <AddToDo submit={this.props.submit} />
-                    <TodoList todos={this.props.todos} delete={this.props.delete} markAsDone={this.props.markAsDone} />
+                    {this.state.showAdd ? <AddToDo addTodo={this.props.addTodo} /> : null}
+
+                    <TodoList todos={this.props.todos} deleteTodo={this.props.deleteTodo} toggleDone={this.props.toggleDone} />
+                </div>
+                <div className="fab noselect" onClick={() => { this.toggleAddTodo(); }}>
+                    <div className="text">+</div>
                 </div>
             </div>
         );
     }
 };
 
-// App.propTypes = {
-//     todos: PropTypes.arrayOf(PropTypes.shape(
-//         {
-//             id: PropTypes.any.isRequired,
-//             description: PropTypes.string.isRequired,
-//             created: PropTypes.number.isRequired,
-//             title: PropTypes.string.isRequired,
-//             priority: PropTypes.number.isRequired,
-//             tags: PropTypes.array.isRequired,
-//             isDone: PropTypes.bool.isRequired,
-//         },
-//     )).isRequired,
-//     submit: PropTypes.func.isRequired,
-//     delete: PropTypes.func.isRequired,
-//     markAsDone: PropTypes.func.isRequired,
-// };
+App.propTypes = {
+    todos: PropTypes.any.isRequired,
+    addTodo: PropTypes.func.isRequired,
+    deleteTodo: PropTypes.func.isRequired,
+    toggleDone: PropTypes.func.isRequired,
+    getTodos: PropTypes.func.isRequired,
+
+};
 
 const mapStateToProps = state => state.todos;
 
 const mapDispatchToProps = dispatch => ({
-    submit: (text, priority, title, tags, created) => {
+    addTodo: (text, priority, title, tags, createdAt) => {
         if (text) {
-            dispatch(actions.submit(text, priority, title, tags, created));
+            dispatch(actions.addTodo(text, priority, title, tags, createdAt));
         }
     },
-    delete: (id) => {
-        dispatch(actions.delete(id));
+    deleteTodo: (id) => {
+        dispatch(actions.deleteTodo(id));
     },
-    markAsDone: (id) => {
-        dispatch(actions.markAsDone(id));
+    toggleDone: (id) => {
+        dispatch(actions.toggleDone(id));
     },
     getTodos: () => {
         dispatch(actions.getTodos());

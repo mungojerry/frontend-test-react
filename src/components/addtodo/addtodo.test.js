@@ -1,21 +1,30 @@
 import Adapter from 'enzyme-adapter-react-16';
 import AddToDo from './addtodo';
 import React from 'react';
+import MockAxios from 'axios-mock-adapter';
 import { configure, shallow, mount } from 'enzyme';
+import Axios from "axios";
+
 configure({ adapter: new Adapter() });
 
 describe('AddToDo component', () => {
 
     let component;
-    const submitMock = jest.fn();
+    const deleteTodoMock = jest.fn();
+    const addTodoMock = jest.fn();
 
     beforeEach(() => {
         component = shallow(
             <AddToDo
-                submit={submitMock}
+                addTodo={addTodoMock}
             />,
         );
     });
+
+    afterAll(() => {
+        mockAxios.restore();
+    });
+
     it('Instantiates component', () => {
         expect(component.exists()).toEqual(true);
     });
@@ -36,10 +45,10 @@ describe('AddToDo component', () => {
         });
 
         it('Should call the submit function when clicked', () => {
-            component = mount(<AddToDo submit={submitMock} />);
-            expect(submitMock.mock.calls.length).toEqual(0);
+            component = mount(<AddToDo addTodo={addTodoMock} />);
+            expect(addTodoMock.mock.calls.length).toEqual(0);
             component.find('form').simulate('submit');
-            expect(submitMock.mock.calls.length).toEqual(1);
+            expect(addTodoMock.mock.calls.length).toEqual(1);
         });
     });
 });

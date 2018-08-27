@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 export const initialState = {
     todos: [],
 };
@@ -14,7 +12,7 @@ export const reducer = (state = initialState, action) => {
                     {
                         id: action.id,
                         description: action.description,
-                        created: action.created,
+                        createdAt: action.createdAt,
                         title: action.title,
                         priority: +action.priority,
                         tags: action.tags,
@@ -31,7 +29,7 @@ export const reducer = (state = initialState, action) => {
                     )),
                 ],
             };
-        case 'MARKASDONE':
+        case 'TOGGLEDONE':
             let idx = state.todos.findIndex(todo => todo.id === action.id);
             state.todos[idx].isDone = !state.todos[idx].isDone;
             return {
@@ -40,20 +38,21 @@ export const reducer = (state = initialState, action) => {
                     ...state.todos
                 ],
             };
-        case 'RECEIVE_TODO':
-            return {
-                ...state,
-                todos: [
-                    ...state.todos,
-                    action.todo
-                ]
-            };
+
         case 'RECEIVE_TODOS':
             return {
                 ...state,
                 todos: [
                     ...state.todos,
                     ...action.todos
+                ]
+            };
+        case 'RECEIVE_TODO':
+            return {
+                ...state,
+                todos: [
+                    ...state.todos,
+                    action.todo
                 ]
             };
         default:

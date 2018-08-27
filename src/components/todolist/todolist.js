@@ -10,12 +10,9 @@ export default class TodoList extends Component {
 
     }
 
-
     render() {
-        console.log(this.props.todos);
         let todoItems = this.props.todos.map(todo => {
-            let date = new Date();
-            date.setTime(todo.created);
+            let date = new Date(todo.createdAt);
             let tags = '';
             if (todo.tags)
                 todo.tags.forEach(tag => tags += `#${tag.trim()} `);
@@ -30,8 +27,8 @@ export default class TodoList extends Component {
                         <div className="todo-priority">Priority: {todo.priority}</div>
                     </div>
                     <div className="todo-buttons">
-                        <FontAwesomeIcon icon="trash-alt" className="todo-button todo-delete" onClick={() => { this.props.delete(todo.id); }} />
-                        <FontAwesomeIcon icon={todo.isDone ? 'check-square' : 'square'} className="todo-button todo-markasdone" onClick={() => { this.props.markAsDone(todo.id); }} />
+                        {/* <FontAwesomeIcon icon="trash-alt" className="todo-button todo-delete" onClick={() => { this.props.deleteTodo(todo.id); }} /> */}
+                        <FontAwesomeIcon icon={todo.isDone ? 'check-square' : 'square'} className="todo-button todo-markasdone" onClick={() => { this.props.toggleDone(todo); }} />
                     </div>
                 </li>
             );
@@ -44,18 +41,8 @@ export default class TodoList extends Component {
     }
 }
 
-// TodoList.propTypes = {
-//     todos: PropTypes.arrayOf(PropTypes.shape(
-//         {
-//             id: PropTypes.any.isRequired,
-//             description: PropTypes.string.isRequired,
-//             created: PropTypes.number.isRequired,
-//             title: PropTypes.string.isRequired,
-//             priority: PropTypes.number.isRequired,
-//             tags: PropTypes.array.isRequired,
-//             isDone: PropTypes.bool.isRequired,
-//         }
-//     )).isRequired,
-//     delete: PropTypes.func.isRequired,
-//     markAsDone: PropTypes.func.isRequired,
-// };
+TodoList.propTypes = {
+    todos: PropTypes.any.isRequired,
+    deleteTodo: PropTypes.func.isRequired,
+    toggleDone: PropTypes.func.isRequired,
+};

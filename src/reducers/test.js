@@ -13,7 +13,7 @@ describe('Reducer', () => {
                 type: 'ADD',
                 id: 1,
                 description: 'Test to do item',
-                created: dateCreated,
+                createdAt: dateCreated,
                 title: 'Test to do item title',
                 priority: 1,
                 tags: tags,
@@ -25,7 +25,7 @@ describe('Reducer', () => {
                     {
                         id: 1,
                         description: 'Test to do item',
-                        created: dateCreated,
+                        createdAt: dateCreated,
                         title: 'Test to do item title',
                         priority: 1,
                         tags: tags,
@@ -46,7 +46,7 @@ describe('Reducer', () => {
                     {
                         id: 1,
                         description: 'Test to do item',
-                        created: dateCreated,
+                        createdAt: dateCreated,
                         title: 'Test to do item title',
                         priority: 1,
                         tags: tags,
@@ -76,7 +76,7 @@ describe('Reducer', () => {
                     {
                         id: 1,
                         description: 'Test to do item',
-                        created: dateCreated,
+                        createdAt: dateCreated,
                         title: 'Test to do item title',
                         priority: 1,
                         tags: tags,
@@ -86,7 +86,7 @@ describe('Reducer', () => {
             };
 
             const action = {
-                type: 'MARKASDONE',
+                type: 'TOGGLEDONE',
                 id: 1,
             };
 
@@ -95,7 +95,7 @@ describe('Reducer', () => {
                     {
                         id: 1,
                         description: 'Test to do item',
-                        created: dateCreated,
+                        createdAt: dateCreated,
                         title: 'Test to do item title',
                         priority: 1,
                         tags: tags,
