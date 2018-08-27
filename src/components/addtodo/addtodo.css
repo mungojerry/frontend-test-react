@@ -6,11 +6,51 @@
     margin-top: 2rem;
     margin-right: auto;
     margin-left: auto;
-    border-radius: 5px;
+    border-radius: 8px;
     background-color: #aaa;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 400;
+    transform: translate(-50%, -50%);
+    -webkit-box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.75);
+    background-color: darkgrey;
+    color: white;
 }
 
-input {
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.pi-button {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    border: none;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    font-weight: 100;
+    padding: 20px;
+    background-color: rgb(233, 84, 30);
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.pi-button:hover {
+    background-color: #408c99;
+}
+
+input,
+select {
+    border-radius: 8px;
     width: 100%;
     display: block;
     height: 30px;
@@ -31,4 +71,5 @@ input {
 
 .todo-submit {
     margin-left: 3px;
+    margin-top: 10px;
 }

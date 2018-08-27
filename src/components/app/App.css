@@ -23,6 +23,46 @@ body {
     margin-bottom: 1rem;
 }
 
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.fab {
+    position: fixed;
+    z-index: 100;
+    width: 5rem;
+    height: 5rem;
+    bottom: 30px;
+    right: 30px;
+    border-radius: 2.5rem;
+    background-color: rgb(233, 84, 30);
+    -webkit-box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.75);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    font-size: 4rem;
+}
+
+.fab .text {
+    height: 100%;
+}
+
+.fab:hover {
+    background-color: #408c99;
+}
+
 .app-title {
     text-align: center;
     font-size: 1.8rem;
